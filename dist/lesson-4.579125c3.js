@@ -1,8 +1,3 @@
-import * as basicLightbox from 'basiclightbox';
-
-import svg from './svg/symbol-defs.svg#icon-cross';
-const marshalsList = document.querySelector('#marshals');
-
 const marshals = [
     {
         name: 'Joachim Murat',
@@ -23,7 +18,7 @@ const marshals = [
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Louis_nicolas_davout.jpg/250px-Louis_nicolas_davout.jpg'
     },
     {
-        name: 'Jean-Baptiste Bessières',
+        name: "Jean-Baptiste Bessi\xe8res",
         born: 'August 6, 1768',
         died: 'May 1, 1813',
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Reisener_-_Portrait_du_mar%C3%A9chal_Jean-Baptiste_Bessi%C3%A8res%2C_duc_d%27Istries_%281768-1813%29.jpg/250px-Reisener_-_Portrait_du_mar%C3%A9chal_Jean-Baptiste_Bessi%C3%A8res%2C_duc_d%27Istries_%281768-1813%29.jpg'
@@ -34,45 +29,17 @@ const marshals = [
         died: 'November 26, 1851',
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Jean-de-Dieu_Soult%2C_mar%C3%A9chal_duc_de_Dalmatie_%281769-1851%29.jpg/250px-Jean-de-Dieu_Soult%2C_mar%C3%A9chal_duc_de_Dalmatie_%281769-1851%29.jpg'
     }
-]
-
-
-
-const marshalElement = marshals.map(marshal => {
+];
+const marshalsList = document.querySelector('#marshals');
+const marshalElement = marshals.map((marshal)=>{
     return `
     <li class="item">
         <p class="text">${marshal.name}</p>
         <img class="image" alt=${marshal.name} src=${marshal.imageUrl}>
-        <button type="button" class="btn">Детальніше</button>
+        <button type="button" class="btn">\u{414}\u{435}\u{442}\u{430}\u{43B}\u{44C}\u{43D}\u{456}\u{448}\u{435}</button>
     </li>
-    `
+    `;
 }).join('');
-
 marshalsList.insertAdjacentHTML("beforeend", marshalElement);
-function createModal(i) {
-    const marshal = marshals[i];
 
-    const instance = basicLightbox.create(`
-        <div class="modal">
-            <button type="button" class="btn__close">
-                <svg class="btn__close__svg">
-                    <use href=${svg}></use>
-                </svg>
-            </button>
-            <ul class="modal__list">
-                <li class="modal__list__item"><h2 class="modal__item__title>${marshal.name}</h2></li>
-                <li class="modal__list__item"><p class="modal__item__text">${marshal.born} - ${marshal.died}</p></li>
-            </ul>
-        </div>
-    `)
-
-    instance.show()
-};
-
-
-
-marshalsList.addEventListener('click', (event) => {
-    if (event.target.nodeName === 'BUTTON') {
-        createModal(0);
-    }
-});
+//# sourceMappingURL=lesson-4.579125c3.js.map
